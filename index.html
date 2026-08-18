@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0e12" />
+  <meta name="description" content="다섯 용과 여섯 번째 신수 키린의 신화, 오룡천주 세계관 아카이브." />
+  <title>오룡천주 아카이브 | 五龍天州 ARCHIVE</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=Noto+Serif+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080b0f;
+      --bg-soft: #10151b;
+      --panel: rgba(19, 25, 32, .82);
+      --panel-strong: #131920;
+      --line: rgba(255,255,255,.09);
+      --line-strong: rgba(255,255,255,.16);
+      --text: #f4f1e9;
+      --muted: #9fa6ad;
+      --gold: #d8b66a;
+      --gold-bright: #f4db9c;
+
+      --wood: #6aa37d;
+      --fire: #d8664c;
+      --earth: #d2ad55;
+      --metal: #aeb7c2;
+      --water: #78a9cb;
+      --kirin: #7ea965;
+
+      --radius: 22px;
+      --shadow: 0 24px 70px rgba(0,0,0,.34);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 78% 12%, rgba(216,182,106,.07), transparent 28rem),
+        radial-gradient(circle at 12% 42%, rgba(73,116,92,.08), transparent 32rem),
+        var(--bg);
+      font-family: "Noto Sans KR", sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      opacity: .16;
+      background-image:
+        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    img { display: block; max-width: 100%; }
+
+    ::selection {
+      color: #17120a;
+      background: var(--gold-bright);
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section {
+      padding: 108px 0;
+      position: relative;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 28px;
+      margin-bottom: 42px;
+    }
+
+    .section-title {
+      margin: 10px 0 0;
+      font-family: "Noto Serif KR", serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.15;
+      letter-spacing: -.045em;
+    }
+
+    .section-desc {
+      max-width: 560px;
+      margin: 0;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      border-bottom: 1px solid transparent;
+      transition: .3s ease;
+    }
+
+    .nav.scrolled {
+      background: rgba(8,11,15,.78);
+      backdrop-filter: blur(18px);
+      border-color: var(--line);
+    }
+
+    .nav-inner {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Noto Serif KR", serif;
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(216,182,106,.5);
+      transform: rotate(45deg);
+    }
+
+    .brand-mark span {
+      color: var(--gold-bright);
+      transform: rotate(-45deg);
+      font-size: 12px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: #c3c7cb;
+      font-size: .82rem;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      position: relative;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: -8px;
+      height: 1px;
+      background: var(--gold);
+      transition: right .25s ease;
+    }
+
+    .nav-links a:hover::after { right: 0; }
+
+    .menu-button {
+      display: none;
+      border: 0;
+      color: var(--text);
+      background: transparent;
+      font-size: 1.35rem;
+      cursor: pointer;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      align-items: center;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(8,11,15,.97) 0%, rgba(8,11,15,.77) 42%, rgba(8,11,15,.34) 100%),
+        linear-gradient(0deg, var(--bg) 0%, transparent 34%),
+        url("images/hero.webp") center 28% / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "五";
+      position: absolute;
+      right: -2vw;
+      top: 7vh;
+      z-index: -1;
+      font-family: "Noto Serif KR", serif;
+      font-size: min(43vw, 600px);
+      font-weight: 900;
+      line-height: 1;
+      color: rgba(255,255,255,.024);
+    }
+
+    .hero-content {
+      padding-top: 86px;
+      width: min(760px, 100%);
+    }
+
+    .hero-kicker {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      color: var(--gold);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-family: "Noto Serif KR", serif;
+      font-size: clamp(4rem, 11vw, 8.6rem);
+      line-height: .92;
+      letter-spacing: -.075em;
+      text-shadow: 0 12px 40px rgba(0,0,0,.42);
+    }
+
+    .hero-title small {
+      display: block;
+      margin-top: 24px;
+      color: #d8d6cf;
+      font-family: "Noto Sans KR", sans-serif;
+      font-size: clamp(.88rem, 1.5vw, 1.05rem);
+      font-weight: 500;
+      letter-spacing: .28em;
+    }
+
+    .hero-copy {
+      max-width: 620px;
+      margin: 34px 0 0;
+      color: #bec3c8;
+      font-size: clamp(.98rem, 2vw, 1.08rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 20px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      color: var(--text);
+      background: rgba(255,255,255,.035);
+      transition: .25s ease;
+    }
+
+    .btn:hover {
+      border-color: rgba(216,182,106,.55);
+      transform: translateY(-2px);
+      background: rgba(216,182,106,.08);
+    }
+
+    .btn.primary {
+      color: #15110a;
+      border-color: var(--gold);
+      background: var(--gold);
+      font-weight: 800;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 34px;
+      margin-top: 64px;
+    }
+
+    .stat strong {
+      display: block;
+      font-family: "Noto Serif KR", serif;
+      font-size: 1.65rem;
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: .72rem;
+      letter-spacing: .12em;
+    }
+
+    /* ===== INTRO ===== */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .seal {
+      position: sticky;
+      top: 120px;
+      min-height: 460px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background:
+        radial-gradient(circle, rgba(216,182,106,.08), transparent 42%),
+        var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .seal-orbit {
+      width: min(72%, 320px);
+      aspect-ratio: 1;
+      position: relative;
+      border: 1px solid rgba(216,182,106,.26);
+      border-radius: 50%;
+    }
+
+    .seal-orbit::before,
+    .seal-orbit::after {
+      content: "";
+      position: absolute;
+      inset: 12%;
+      border: 1px solid rgba(216,182,106,.16);
+      transform: rotate(45deg);
+    }
+
+    .seal-orbit::after {
+      inset: 28%;
+      border-color: rgba(216,182,106,.33);
+    }
+
+    .seal-center {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-family: "Noto Serif KR", serif;
+      font-size: 4.4rem;
+      font-weight: 900;
+      color: var(--gold-bright);
+    }
+
+    .world-copy h3 {
+      margin: 0 0 24px;
+      font-family: "Noto Serif KR", serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: -.04em;
+    }
+
+    .world-copy p {
+      color: #c3c7ca;
+      margin: 0 0 18px;
+    }
+
+    .quote {
+      margin: 38px 0;
+      padding: 26px 0 26px 26px;
+      border-left: 2px solid var(--gold);
+      color: #ded8c9;
+      font-family: "Noto Serif KR", serif;
+      font-size: 1.12rem;
+    }
+
+    .lore-points {
+      display: grid;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .lore-point {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 16px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.02);
+    }
+
+    .lore-num {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(216,182,106,.3);
+      border-radius: 50%;
+      color: var(--gold);
+      font-family: "Noto Serif KR", serif;
+    }
+
+    .lore-point strong { display: block; margin-bottom: 5px; }
+    .lore-point span { color: var(--muted); font-size: .9rem; }
+
+    /* ===== MAP ===== */
+    .realm-board {
+      position: relative;
+      min-height: 690px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(210,173,85,.12), transparent 16%),
+        radial-gradient(circle at 77% 50%, rgba(106,163,125,.08), transparent 25%),
+        radial-gradient(circle at 24% 50%, rgba(120,169,203,.08), transparent 25%),
+        radial-gradient(circle at 50% 22%, rgba(174,183,194,.07), transparent 24%),
+        radial-gradient(circle at 50% 79%, rgba(216,102,76,.08), transparent 24%),
+        #0d1217;
+      box-shadow: var(--shadow);
+    }
+
+    .realm-board::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .22;
+      background:
+        linear-gradient(45deg, transparent 49.8%, rgba(255,255,255,.05) 50%, transparent 50.2%),
+        linear-gradient(-45deg, transparent 49.8%, rgba(255,255,255,.05) 50%, transparent 50.2%);
+      pointer-events: none;
+    }
+
+    .realm-node {
+      position: absolute;
+      width: 180px;
+      min-height: 128px;
+      padding: 18px;
+      border: 1px solid var(--line-strong);
+      border-radius: 18px;
+      background: rgba(16,21,27,.86);
+      backdrop-filter: blur(12px);
+      cursor: default;
+      transition: .25s ease;
+    }
+
+    .realm-node:hover {
+      z-index: 3;
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 18px 60px rgba(0,0,0,.3);
+    }
+
+    .realm-node .direction {
+      color: var(--accent);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+    }
+
+    .realm-node h3 {
+      margin: 6px 0 4px;
+      font-family: "Noto Serif KR", serif;
+      font-size: 1.22rem;
+    }
+
+    .realm-node p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    .realm-node .element {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 4px 9px;
+      border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+      border-radius: 999px;
+      color: var(--accent);
+      font-size: .68rem;
+      font-weight: 700;
+    }
+
+    .realm-center {
+      --accent: var(--earth);
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .realm-center:hover { transform: translate(-50%, calc(-50% - 5px)); }
+
+    .realm-north {
+      --accent: var(--metal);
+      left: 50%;
+      top: 7%;
+      transform: translateX(-50%);
+    }
+
+    .realm-north:hover { transform: translate(-50%, -5px); }
+
+    .realm-south {
+      --accent: var(--fire);
+      left: 50%;
+      bottom: 7%;
+      transform: translateX(-50%);
+    }
+
+    .realm-south:hover { transform: translate(-50%, -5px); }
+
+    .realm-east {
+      --accent: var(--wood);
+      right: 7%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .realm-east:hover { transform: translateY(calc(-50% - 5px)); }
+
+    .realm-west {
+      --accent: var(--water);
+      left: 7%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .realm-west:hover { transform: translateY(calc(-50% - 5px)); }
+
+    /* ===== HISTORY ===== */
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 119px;
+      top: 10px;
+      bottom: 10px;
+      width: 1px;
+      background: linear-gradient(var(--gold), rgba(216,182,106,.08));
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 54px;
+      padding: 0 0 46px;
+      position: relative;
+    }
+
+    .timeline-era {
+      padding-top: 2px;
+      color: var(--gold);
+      font-family: "Noto Serif KR", serif;
+      font-size: .85rem;
+      text-align: right;
+    }
+
+    .timeline-body {
+      position: relative;
+      padding: 0 0 0 26px;
+    }
+
+    .timeline-body::before {
+      content: "";
+      position: absolute;
+      left: -32px;
+      top: 8px;
+      width: 9px;
+      height: 9px;
+      border: 2px solid var(--bg);
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 1px var(--gold);
+    }
+
+    .timeline-body h3 {
+      margin: 0 0 8px;
+      font-family: "Noto Serif KR", serif;
+      font-size: 1.25rem;
+    }
+
+    .timeline-body p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .91rem;
+    }
+
+    /* ===== CHARACTERS ===== */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 26px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-btn {
+      padding: 9px 13px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      color: #16110a;
+      border-color: var(--gold);
+      background: var(--gold);
+    }
+
+    .search {
+      width: min(280px, 100%);
+      padding: 10px 14px;
+      color: var(--text);
+      outline: 0;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .search:focus { border-color: rgba(216,182,106,.6); }
+
+    .character-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .character-card {
+      --accent: var(--gold);
+      min-height: 500px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel-strong);
+      cursor: pointer;
+      transition: .28s ease;
+      box-shadow: 0 12px 40px rgba(0,0,0,.15);
+    }
+
+    .character-card:hover {
+      transform: translateY(-7px);
+      border-color: color-mix(in srgb, var(--accent) 42%, transparent);
+      box-shadow: 0 26px 70px rgba(0,0,0,.28);
+    }
+
+    .character-image {
+      height: 310px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 30%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 45%),
+        linear-gradient(180deg, #1b2229, #11161c);
+    }
+
+    .character-image::before {
+      content: attr(data-symbol);
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: color-mix(in srgb, var(--accent) 24%, transparent);
+      font-family: "Noto Serif KR", serif;
+      font-size: 8rem;
+      font-weight: 900;
+    }
+
+    .character-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      position: relative;
+      z-index: 1;
+      transition: transform .45s ease;
+    }
+
+    .character-card:hover .character-image img { transform: scale(1.035); }
+
+    .character-image::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 45%;
+      background: linear-gradient(transparent, var(--panel-strong));
+      pointer-events: none;
+    }
+
+    .character-content {
+      position: relative;
+      z-index: 3;
+      margin-top: -42px;
+      padding: 0 22px 24px;
+    }
+
+    .character-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      color: var(--accent);
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+
+    .character-name {
+      margin: 0;
+      font-family: "Noto Serif KR", serif;
+      font-size: 1.8rem;
+      letter-spacing: -.04em;
+    }
+
+    .character-subtitle {
+      margin: 3px 0 14px;
+      color: #acb2b8;
+      font-size: .84rem;
+    }
+
+    .character-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      padding: 5px 9px;
+      color: #aeb4ba;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: .68rem;
+    }
+
+    .character-card.hidden { display: none; }
+
+    /* ===== TRIAL ===== */
+    .trial-banner {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      min-height: 460px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      overflow: hidden;
+      background: #10151b;
+      box-shadow: var(--shadow);
+    }
+
+    .trial-copy {
+      padding: clamp(34px, 6vw, 74px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .trial-copy h2 {
+      margin: 10px 0 18px;
+      font-family: "Noto Serif KR", serif;
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      line-height: 1.15;
+      letter-spacing: -.045em;
+    }
+
+    .trial-copy p {
+      max-width: 580px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .trial-visual {
+      min-height: 390px;
+      position: relative;
+      background:
+        linear-gradient(90deg, #10151b, transparent 40%),
+        url("images/kirin.webp") center 24% / cover no-repeat;
+    }
+
+    .trial-visual::after {
+      content: "麒麟";
+      position: absolute;
+      right: 30px;
+      bottom: 18px;
+      color: rgba(255,255,255,.16);
+      font-family: "Noto Serif KR", serif;
+      font-size: clamp(4rem, 10vw, 8rem);
+      font-weight: 900;
+      writing-mode: vertical-rl;
+      line-height: .9;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 70px 0 34px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: end;
+    }
+
+    .footer-title {
+      margin: 0;
+      font-family: "Noto Serif KR", serif;
+      font-size: 1.5rem;
+    }
+
+    .footer-copy {
+      max-width: 600px;
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .footer-note {
+      color: #697078;
+      font-size: .72rem;
+      text-align: right;
+    }
+
+    /* ===== MODAL ===== */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      place-items: center;
+      padding: 20px;
+      background: rgba(3,5,7,.82);
+      backdrop-filter: blur(14px);
+    }
+
+    .modal.open { display: grid; }
+
+    .modal-panel {
+      width: min(900px, 100%);
+      max-height: min(760px, calc(100svh - 40px));
+      overflow: auto;
+      position: relative;
+      border: 1px solid var(--line-strong);
+      border-radius: 28px;
+      background: #10151b;
+      box-shadow: 0 40px 120px rgba(0,0,0,.55);
+    }
+
+    .modal-close {
+      width: 42px;
+      height: 42px;
+      position: sticky;
+      float: right;
+      top: 16px;
+      right: 16px;
+      z-index: 5;
+      display: grid;
+      place-items: center;
+      margin: 16px 16px -58px 0;
+      border: 1px solid var(--line-strong);
+      border-radius: 50%;
+      color: var(--text);
+      background: rgba(8,11,15,.7);
+      cursor: pointer;
+    }
+
+    .modal-inner {
+      display: grid;
+      grid-template-columns: minmax(260px, .8fr) 1.2fr;
+    }
+
+    .modal-image {
+      min-height: 620px;
+      background: linear-gradient(180deg, #1c2229, #0c1014);
+    }
+
+    .modal-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 620px;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .modal-copy {
+      padding: 66px 48px 42px;
+    }
+
+    .modal-kicker {
+      color: var(--modal-accent, var(--gold));
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+    }
+
+    .modal-name {
+      margin: 7px 0 4px;
+      font-family: "Noto Serif KR", serif;
+      font-size: clamp(2.3rem, 6vw, 3.5rem);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .modal-role {
+      margin: 0 0 28px;
+      color: var(--muted);
+    }
+
+    .profile-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .profile-item {
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: rgba(255,255,255,.02);
+    }
+
+    .profile-item span {
+      display: block;
+      color: #727a82;
+      font-size: .67rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    .profile-item strong {
+      display: block;
+      margin-top: 3px;
+      font-size: .9rem;
+      font-weight: 600;
+    }
+
+    .modal-description {
+      color: #c2c7cb;
+      font-size: .92rem;
+    }
+
+    .modal-description h4 {
+      margin: 26px 0 8px;
+      color: var(--text);
+      font-family: "Noto Serif KR", serif;
+      font-size: 1.05rem;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .section { padding: 82px 0; }
+      .section-head { grid-template-columns: 1fr; }
+      .intro-grid { grid-template-columns: 1fr; gap: 38px; }
+      .seal { position: relative; top: 0; min-height: 360px; }
+      .character-grid { grid-template-columns: repeat(2, 1fr); }
+      .trial-banner { grid-template-columns: 1fr; }
+      .trial-visual { order: -1; }
+      .modal-inner { grid-template-columns: 1fr; }
+      .modal-image { min-height: 420px; max-height: 520px; }
+      .modal-image img { min-height: 420px; max-height: 520px; }
+    }
+
+    @media (max-width: 720px) {
+      .container { width: min(100% - 28px, 1180px); }
+      .nav-links {
+        position: absolute;
+        top: 74px;
+        left: 14px;
+        right: 14px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(10,13,17,.95);
+        backdrop-filter: blur(18px);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px; }
+      .menu-button { display: block; }
+
+      .hero-title { font-size: clamp(3.4rem, 20vw, 6rem); }
+      .hero-stats { gap: 22px; }
+      .hero::before {
+        background:
+          linear-gradient(0deg, rgba(8,11,15,.98) 4%, rgba(8,11,15,.76) 55%, rgba(8,11,15,.38)),
+          url("images/hero.webp") center top / cover no-repeat;
+      }
+
+      .realm-board { min-height: auto; padding: 16px; display: grid; gap: 10px; }
+      .realm-node {
+        position: static;
+        width: 100%;
+        min-height: 0;
+        transform: none !important;
+      }
+      .realm-center { order: 1; }
+      .realm-east { order: 2; }
+      .realm-south { order: 3; }
+      .realm-west { order: 4; }
+      .realm-north { order: 5; }
+
+      .toolbar { align-items: stretch; flex-direction: column; }
+      .search { width: 100%; }
+      .character-grid { grid-template-columns: 1fr; }
+      .character-card { min-height: 0; }
+      .character-image { height: 390px; }
+
+      .timeline::before { left: 14px; }
+      .timeline-item { grid-template-columns: 1fr; gap: 8px; padding-left: 40px; }
+      .timeline-era { text-align: left; }
+      .timeline-body { padding-left: 0; }
+      .timeline-body::before { left: -30px; }
+
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-note { text-align: left; }
+
+      .modal-copy { padding: 36px 24px; }
+      .profile-list { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 420px) {
+      .profile-list { grid-template-columns: 1fr; }
+      .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); }
+      .stat strong { font-size: 1.3rem; }
+      .stat span { font-size: .62rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="오룡천주 아카이브 홈">
+        <span class="brand-mark"><span>五</span></span>
+        <span>오룡천주 기록보관소</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#world">세계관</a>
+        <a href="#realms">오방</a>
+        <a href="#history">연대기</a>
+        <a href="#characters">등장인물</a>
+        <a href="#conflict">중앙 방위전</a>
+      </div>
+
+      <button class="menu-button" id="menuButton" aria-label="메뉴 열기">☰</button>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-kicker">五行 · 五方 · 五龍</div>
+
+        <h1 class="hero-title">
+          오룡천주
+          <small>FIVE DRAGONS OF THE CELESTIAL REALM</small>
+        </h1>
+
+        <p class="hero-copy">
+          오행의 이치를 품은 다섯 용이 동·서·남·북·중앙을 나누어 다스리는 신화의 대륙.
+          천 년 동안 이어진 질서 아래, 잊혀졌던 여섯 번째 신수의 귀환이 다시 천하의 균형을 흔든다.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#world">세계관 열람</a>
+          <a class="btn" href="#characters">인물 기록 보기</a>
+        </div>
+
+        <div class="hero-stats" aria-label="세계관 핵심 수치">
+          <div class="stat"><strong>5</strong><span>오행의 용</span></div>
+          <div class="stat"><strong>5</strong><span>천하의 방위</span></div>
+          <div class="stat"><strong>1000+</strong><span>이어진 질서</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="world">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">World Lore</span>
+            <h2 class="section-title">다섯 용이 나누어 다스리는 천하</h2>
+          </div>
+          <p class="section-desc">
+            오룡천주의 현재 질서는 태초부터 존재한 것이 아니다.
+            오늘의 오룡 체제는 오래전 황룡과 키린의 패권전쟁이 남긴 결과다.
+          </p>
+        </div>
+
+        <div class="intro-grid">
+          <div class="seal" aria-hidden="true">
+            <div class="seal-orbit">
+              <div class="seal-center">龍</div>
+            </div>
+          </div>
+
+          <article class="world-copy">
+            <h3>황룡의 승리, 그리고 다섯으로 나뉜 힘</h3>
+
+            <p>
+              태고의 오룡천주는 하나의 황룡과 신수 키린이 천하의 주인을 두고 끊임없이 충돌하던 대지였다.
+              긴 사투 끝에 황룡이 가까스로 승리했지만, 승자 역시 더는 홀로 대륙 전체를 지탱할 수 없을 만큼 큰 상처를 입었다.
+            </p>
+
+            <p>
+              황룡은 오행의 이치에 맞추어 자신의 힘과 기억을 다섯 갈래로 나누었다.
+              그렇게 탄생한 후계자들이 목·화·토·금·수의 힘을 맡은 오룡이며,
+              각각 동·남·중·북·서의 방위를 통치하는 천자의 대리인이 되었다.
+            </p>
+
+            <div class="quote">
+              “다섯으로 흩어진 힘은 언젠가 다시 하나가 되어,
+              돌아올 재앙에 맞서야 한다.”
+            </div>
+
+            <div class="lore-points">
+              <div class="lore-point">
+                <div class="lore-num">一</div>
+                <div>
+                  <strong>오행과 오방</strong>
+                  <span>목·화·토·금·수의 속성과 동·남·중·북·서의 방위가 각 용의 권능과 영지에 대응한다.</span>
+                </div>
+              </div>
+
+              <div class="lore-point">
+                <div class="lore-num">二</div>
+                <div>
+                  <strong>오룡의 시련</strong>
+                  <span>다섯 용의 힘을 인간 한 명에게 이어 주어, 언젠가 돌아올 키린에 맞설 존재를 준비하기 위한 장치.</span>
+                </div>
+              </div>
+
+              <div class="lore-point">
+                <div class="lore-num">三</div>
+                <div>
+                  <strong>여섯 번째 신수</strong>
+                  <span>오행과 오방의 체계 밖으로 밀려난 키린은 천 년 동안 옛 패권을 되찾을 때만을 기다렸다.</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="realms">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Five Realms</span>
+            <h2 class="section-title">오룡천주의 오방</h2>
+          </div>
+          <p class="section-desc">
+            중앙의 황룡궁을 기준으로 네 영지가 사방을 감싼다.
+            각 지역은 통치자의 오행과 성정에 따라 전혀 다른 풍경과 문화를 형성한다.
+          </p>
+        </div>
+
+        <div class="realm-board">
+          <article class="realm-node realm-center">
+            <span class="direction">CENTER · 中</span>
+            <h3>황룡궁</h3>
+            <p>황아린이 다스리는 대륙의 중심이자 천하 질서의 상징.</p>
+            <span class="element">土 · 대지</span>
+          </article>
+
+          <article class="realm-node realm-north">
+            <span class="direction">NORTH · 北</span>
+            <h3>흑린산</h3>
+            <p>연흑린이 지배하는 강철과 힘의 북방.</p>
+            <span class="element">金 · 강철</span>
+          </article>
+
+          <article class="realm-node realm-south">
+            <span class="direction">SOUTH · 南</span>
+            <h3>적염주</h3>
+            <p>호무라가 다스리는 불꽃과 투쟁의 남방.</p>
+            <span class="element">火 · 화염</span>
+          </article>
+
+          <article class="realm-node realm-east">
+            <span class="direction">EAST · 東</span>
+            <h3>청룡림</h3>
+            <p>세이린이 보살피는 생명과 수림의 동방.</p>
+            <span class="element">木 · 생명</span>
+          </article>
+
+          <article class="realm-node realm-west">
+            <span class="direction">WEST · 西</span>
+            <h3>백설은</h3>
+            <p>유키노가 머무는 눈과 고요의 서방 설국.</p>
+            <span class="element">水 · 설수</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="history">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Chronicle</span>
+            <h2 class="section-title">오룡천주 연대기</h2>
+          </div>
+          <p class="section-desc">
+            현재의 중앙 방위전까지 이어지는 세계관 핵심 사건만 추린 기록.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-era">태고</div>
+            <div class="timeline-body">
+              <h3>황룡과 키린의 패권전쟁</h3>
+              <p>하나의 황룡과 신수 키린이 천하의 패권을 두고 긴 세월 대립한다. 두 존재의 힘은 사실상 대등했다.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-era">약 1000년 전</div>
+            <div class="timeline-body">
+              <h3>키린의 패배</h3>
+              <p>오랜 전쟁은 근소한 차이로 황룡의 승리로 끝난다. 하지만 황룡 역시 치명적인 소모를 피하지 못한다.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-era">질서의 시작</div>
+            <div class="timeline-body">
+              <h3>오룡의 탄생</h3>
+              <p>황룡은 오행의 이치에 따라 자신을 다섯으로 분화한다. 다섯 용은 오방을 맡아 새로운 천하 질서를 세운다.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-era">후대</div>
+            <div class="timeline-body">
+              <h3>오룡의 시련</h3>
+              <p>언젠가 귀환할 키린에 대비하여, 다섯 권능을 한 인간에게 계승할 수 있는 일련의 시련이 이어진다.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-era">현재</div>
+            <div class="timeline-body">
+              <h3>중앙 방위전</h3>
+              <p>모든 시련이 완수된 뒤 키린이 움직이기 시작한다. 오룡천주의 중심, 황룡궁이 다시 한번 패권전쟁의 무대가 된다.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="characters">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Characters</span>
+            <h2 class="section-title">천하를 움직이는 존재들</h2>
+          </div>
+          <p class="section-desc">
+            카드를 클릭하면 상세 기록이 열린다. 속성별 필터와 이름 검색도 지원한다.
+          </p>
+        </div>
+
+        <div class="toolbar">
+          <div class="filters" aria-label="캐릭터 필터">
+            <button class="filter-btn active" data-filter="all">전체</button>
+            <button class="filter-btn" data-filter="wood">목</button>
+            <button class="filter-btn" data-filter="fire">화</button>
+            <button class="filter-btn" data-filter="earth">토</button>
+            <button class="filter-btn" data-filter="metal">금</button>
+            <button class="filter-btn" data-filter="water">수</button>
+            <button class="filter-btn" data-filter="none">무속성</button>
+          </div>
+
+          <input class="search" id="characterSearch" type="search" placeholder="인물 검색..." aria-label="캐릭터 검색">
+        </div>
+
+        <div class="character-grid" id="characterGrid">
+
+          <article class="character-card" style="--accent:var(--kirin)" data-element="none" data-character="kirin" tabindex="0">
+            <div class="character-image" data-symbol="麒">
+              <img src="images/kirin.webp" alt="키린" onerror="this.remove()">
+            </div>
+            <div class="character-content">
+              <div class="character-meta">SACRED BEAST · 無</div>
+              <h3 class="character-name">키린</h3>
+              <p class="character-subtitle">오행 밖의 여섯 번째 신수</p>
+              <div class="character-tags">
+                <span class="tag">기린</span>
+                <span class="tag">2000세 이상</span>
+                <span class="tag">비바람·번개</span>
+                <span class="tag">찬탈자</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="character-card" style="--accent:var(--earth)" data-element="earth" data-character="hwangarin" tabindex="0">
+            <div class="character-image" data-symbol="土">
+              <img src="images/hwangarin.webp" alt="황아린" onerror="this.remove()">
+            </div>
+            <div class="character-content">
+              <div class="character-meta">YELLOW DRAGON · 中</div>
+              <h3 class="character-name">황아린</h3>
+              <p class="character-subtitle">중앙 황룡궁의 대지의 용</p>
+              <div class="character-tags">
+                <span class="tag">황룡</span>
+                <span class="tag">1000세 이상</span>
+                <span class="tag">토(土)</span>
+                <span class="tag">중앙</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="character-card" style="--accent:var(--metal)" data-element="metal" data-character="yeonheukrin" tabindex="0">
+            <div class="character-image" data-symbol="金">
+              <img src="images/yeonheukrin.webp" alt="연흑린" onerror="this.remove()">
+            </div>
+            <div class="character-content">
+              <div class="character-meta">BLACK DRAGON · 北</div>
+              <h3 class="character-name">연흑린</h3>
+              <p class="character-subtitle">흑린산의 강철의 용</p>
+              <div class="character-tags">
+                <span class="tag">흑룡</span>
+                <span class="tag">1000세</span>
+                <span class="tag">금(金)</span>
+                <span class="tag">북방</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="character-card" style="--accent:var(--water)" data-element="water" data-character="yukino" tabindex="0">
+            <div class="character-image" data-symbol="水">
+              <img src="images/yukino.webp" alt="유키노" onerror="this.remove()">
+            </div>
+            <div class="character-content">
+              <div class="character-meta">WHITE DRAGON · 西</div>
+              <h3 class="character-name">유키노</h3>
+              <p class="character-subtitle">백설은의 설국을 지키는 용</p>
+              <div class="character-tags">
+                <span class="tag">백룡</span>
+                <span class="tag">500세</span>
+                <span class="tag">수(水)</span>
+                <span class="tag">서방</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="character-card" style="--accent:var(--fire)" data-element="fire" data-character="homura" tabindex="0">
+            <div class="character-image" data-symbol="火">
+              <img src="images/homura.webp" alt="호무라" onerror="this.remove()">
+            </div>
+            <div class="character-content">
+              <div class="character-meta">RED DRAGON · 南</div>
+              <h3 class="character-name">호무라</h3>
+              <p class="character-subtitle">적염주의 불꽃과 투쟁의 용</p>
+              <div class="character-tags">
+                <span class="tag">적룡</span>
+                <span class="tag">1000세 이상</span>
+                <span class="tag">화(火)</span>
+                <span class="tag">남방</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="character-card" style="--accent:var(--wood)" data-element="wood" data-character="seirin" tabindex="0">
+            <div class="character-image" data-symbol="木">
+              <img src="images/seirin.webp" alt="세이린" onerror="this.remove()">
+            </div>
+            <div class="character-content">
+              <div class="character-meta">AZURE DRAGON · 東</div>
+              <h3 class="character-name">세이린</h3>
+              <p class="character-subtitle">청룡림의 생명을 보살피는 용</p>
+              <div class="character-tags">
+                <span class="tag">청룡</span>
+                <span class="tag">1000세 이상</span>
+                <span class="tag">목(木)</span>
+                <span class="tag">동방</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="conflict">
+      <div class="container">
+        <div class="trial-banner">
+          <div class="trial-copy">
+            <span class="eyebrow">Current Conflict</span>
+            <h2>오룡천주,<br>중앙 방위전</h2>
+            <p>
+              다섯 시련을 통과해 오행의 힘을 하나로 이어받은 인간이 나타난 현재.
+              키린은 그 계승자를 쓰러뜨리고 천 년 전 잃었던 천하의 패권을 되찾기 위해 중앙으로 향한다.
+              황룡궁은 과거의 전쟁을 끝낼 마지막 방어선이 된다.
+            </p>
+          </div>
+
+          <div class="trial-visual" aria-label="키린 비주얼 영역"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h2 class="footer-title">五龍天州 ARCHIVE</h2>
+        <p class="footer-copy">
+          오룡천주 세계관을 소개하기 위한 비공식 개인 아카이브 템플릿.
+          이미지와 세부 설정은 저장소의 파일과 데이터만 수정해 계속 확장할 수 있습니다.
+        </p>
+      </div>
+      <div class="footer-note">
+        WORLD ARCHIVE · HTML / CSS / JS<br>
+        Designed for GitHub Pages
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal" id="characterModal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalName">
+      <button class="modal-close" id="modalClose" aria-label="닫기">✕</button>
+      <div class="modal-inner">
+        <div class="modal-image" id="modalImage"></div>
+
+        <div class="modal-copy">
+          <div class="modal-kicker" id="modalKicker"></div>
+          <h2 class="modal-name" id="modalName"></h2>
+          <p class="modal-role" id="modalRole"></p>
+
+          <div class="profile-list" id="modalProfile"></div>
+
+          <div class="modal-description">
+            <h4>성격</h4>
+            <p id="modalPersonality"></p>
+
+            <h4>기록</h4>
+            <p id="modalDescription"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const characters = {
+      kirin: {
+        name: "키린",
+        kicker: "SACRED BEAST · THE SIXTH",
+        role: "오행과 오방 어디에도 속하지 않는 여섯 번째 신수",
+        image: "images/kirin.webp",
+        accent: "#7ea965",
+        profile: {
+          "종족": "기린",
+          "나이": "2,000세 이상",
+          "오행": "없음",
+          "방위": "없음",
+          "권능": "비바람 · 번개",
+          "상태": "오룡천주의 찬탈자"
+        },
+        personality: "무뚝뚝하고 야망이 크며, 강자와의 충돌을 두려워하지 않는 호전적인 성정.",
+        description: "오룡천주의 질서가 세워지기 전부터 존재했던 태고의 신수. 과거 하나였던 황룡과 천하의 패권을 다투었고, 근소한 차이로 패배한 뒤 천 년 동안 힘을 온존했다. 현재의 오룡 개개인보다 오래되고 강대한 존재로, 오행의 힘을 모두 계승한 인간을 쓰러뜨려 옛 패권을 되찾으려 한다."
+      },
+
+      hwangarin: {
+        name: "황아린",
+        kicker: "YELLOW DRAGON · CENTER",
+        role: "오룡천주의 중앙, 황룡궁을 다스리는 대지의 용",
+        image: "images/hwangarin.webp",
+        accent: "#d2ad55",
+        profile: {
+          "종족": "용 · 황룡",
+          "나이": "1,000세 이상",
+          "오행": "토(土)",
+          "방위": "중(中)",
+          "영지": "황룡궁",
+          "관계": "키린과 적대"
+        },
+        personality: "자애롭고 인자하며 단아하다. 천자의 위엄과 포용력을 함께 지닌 성정.",
+        description: "과거 하나였던 황룡의 힘과 기억을 가장 많이 이어받은 현재의 황룡. 원래 황룡 그 자체와 완전히 같은 존재는 아니며, 그에게서 갈라져 나온 가장 큰 후계 파편에 가깝다. 중앙을 수호하며 오룡천주의 질서를 대표한다."
+      },
+
+      yeonheukrin: {
+        name: "연흑린",
+        kicker: "BLACK DRAGON · NORTH",
+        role: "오룡천주의 북방 흑린산을 다스리는 강철의 용",
+        image: "images/yeonheukrin.webp",
+        accent: "#aeb7c2",
+        profile: {
+          "종족": "용 · 흑룡",
+          "나이": "1,000세",
+          "오행": "금(金)",
+          "방위": "북(北)",
+          "영지": "흑린산",
+          "상징": "강철"
+        },
+        personality: "잔혹하고 약육강식의 논리를 따르며, 요사스러운 말투를 사용한다. 다만 자신이 인정한 특별한 상대에게만은 예외를 둔다.",
+        description: "북방의 험준한 흑린산을 지배하는 흑룡. 오행 가운데 금의 이치를 맡아 강철과 힘을 상징한다. 가혹한 가치관을 지녔지만, 오룡의 시련을 넘어선 인간에게는 다른 면모를 보인다."
+      },
+
+      yukino: {
+        name: "유키노",
+        kicker: "WHITE DRAGON · WEST",
+        role: "오룡천주의 서방 백설은을 다스리는 설국의 용",
+        image: "images/yukino.webp",
+        accent: "#78a9cb",
+        profile: {
+          "종족": "용 · 백룡",
+          "나이": "500세",
+          "오행": "수(水)",
+          "방위": "서(西)",
+          "영지": "백설은",
+          "상징": "눈 · 물"
+        },
+        personality: "무뚝뚝하고 매사에 무관심해 보이며 말수도 적다. 그러나 마음을 허락한 상대에게는 조용하고 따뜻하다.",
+        description: "눈으로 뒤덮인 서방의 설국 백설은을 다스리는 백룡. 오행 가운데 수의 이치를 담당한다. 차갑고 고요한 첫인상과 달리, 특별한 인간에게는 명확한 온기를 드러낸다."
+      },
+
+      homura: {
+        name: "호무라",
+        kicker: "RED DRAGON · SOUTH",
+        role: "오룡천주의 남방 적염주를 다스리는 불의 용",
+        image: "images/homura.webp",
+        accent: "#d8664c",
+        profile: {
+          "종족": "용 · 적룡",
+          "나이": "1,000세 이상",
+          "오행": "화(火)",
+          "방위": "남(南)",
+          "영지": "적염주",
+          "상징": "불꽃 · 전투"
+        },
+        personality: "투쟁 그 자체를 즐기는 전투광. 상대가 누구든 강함을 확인하고 겨루려는 호전성이 강하다.",
+        description: "뜨거운 남방 적염주를 지배하는 적룡. 오행 가운데 화를 담당하며, 불꽃처럼 직선적이고 격렬한 성정을 지녔다. 전투와 경쟁에서 가장 생생하게 자신의 존재를 증명한다."
+      },
+
+      seirin: {
+        name: "세이린",
+        kicker: "AZURE DRAGON · EAST",
+        role: "오룡천주의 동방 청룡림을 다스리는 생명의 용",
+        image: "images/seirin.webp",
+        accent: "#6aa37d",
+        profile: {
+          "종족": "용 · 청룡",
+          "나이": "1,000세 이상",
+          "오행": "목(木)",
+          "방위": "동(東)",
+          "영지": "청룡림",
+          "상징": "수림 · 생명"
+        },
+        personality: "자애롭고 생명을 중시하며 인간에게 호의적이다. 다정하지만 진중하고, 오래된 존재다운 고풍스러운 말투를 쓴다.",
+        description: "푸른 숲이 펼쳐진 동방 청룡림을 다스리는 청룡. 오행 가운데 목의 이치를 맡아 성장과 생명을 상징한다. 오룡 가운데서도 인간과 생명에 대한 애정이 특히 강하다."
+      }
+    };
+
+    const nav = document.getElementById("nav");
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
+
+    window.addEventListener("scroll", () => {
+      nav.classList.toggle("scrolled", window.scrollY > 20);
+    });
+
+    menuButton.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => navLinks.classList.remove("open"));
+    });
+
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const cards = document.querySelectorAll(".character-card");
+    const searchInput = document.getElementById("characterSearch");
+
+    let activeFilter = "all";
+
+    function applyCharacterFilter() {
+      const keyword = searchInput.value.trim().toLowerCase();
+
+      cards.forEach(card => {
+        const name = card.querySelector(".character-name").textContent.toLowerCase();
+        const subtitle = card.querySelector(".character-subtitle").textContent.toLowerCase();
+        const element = card.dataset.element;
+
+        const filterMatch = activeFilter === "all" || element === activeFilter;
+        const searchMatch = !keyword || name.includes(keyword) || subtitle.includes(keyword);
+
+        card.classList.toggle("hidden", !(filterMatch && searchMatch));
+      });
+    }
+
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        filterButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+        activeFilter = button.dataset.filter;
+        applyCharacterFilter();
+      });
+    });
+
+    searchInput.addEventListener("input", applyCharacterFilter);
+
+    const modal = document.getElementById("characterModal");
+    const modalClose = document.getElementById("modalClose");
+    const modalImage = document.getElementById("modalImage");
+    const modalKicker = document.getElementById("modalKicker");
+    const modalName = document.getElementById("modalName");
+    const modalRole = document.getElementById("modalRole");
+    const modalProfile = document.getElementById("modalProfile");
+    const modalPersonality = document.getElementById("modalPersonality");
+    const modalDescription = document.getElementById("modalDescription");
+
+    function openCharacterModal(key) {
+      const data = characters[key];
+      if (!data) return;
+
+      modal.style.setProperty("--modal-accent", data.accent);
+      modalKicker.textContent = data.kicker;
+      modalName.textContent = data.name;
+      modalRole.textContent = data.role;
+      modalPersonality.textContent = data.personality;
+      modalDescription.textContent = data.description;
+
+      modalImage.innerHTML = `
+        <img src="${data.image}" alt="${data.name}"
+          onerror="this.style.display='none'; this.parentElement.style.background='radial-gradient(circle at 50% 30%, ${data.accent}22, transparent 45%), linear-gradient(180deg,#1c2229,#0c1014)'">
+      `;
+
+      modalProfile.innerHTML = Object.entries(data.profile)
+        .map(([label, value]) => `
+          <div class="profile-item">
+            <span>${label}</span>
+            <strong>${value}</strong>
+          </div>
+        `).join("");
+
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeCharacterModal() {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    cards.forEach(card => {
+      card.addEventListener("click", () => openCharacterModal(card.dataset.character));
+      card.addEventListener("keydown", e => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openCharacterModal(card.dataset.character);
+        }
+      });
+    });
+
+    modalClose.addEventListener("click", closeCharacterModal);
+
+    modal.addEventListener("click", e => {
+      if (e.target === modal) closeCharacterModal();
+    });
+
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && modal.classList.contains("open")) {
+        closeCharacterModal();
+      }
+    });
+  </script>
+</body>
+</html>
